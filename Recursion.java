@@ -98,11 +98,17 @@ public class Recursion {
 
     private static boolean palindrome(String str){
 
-        char[] strChar = str.toCharArray();
-        if(strChar.length<2)
+//        char[] strChar = str.toCharArray();
+//        if(strChar.length<2)
+//            return true;
+//        if(strChar[0] == strChar[strChar.length-1])
+//            return palindrome(String.valueOf(Arrays.copyOfRange(strChar, 1, strChar.length-1)));
+//        return false;
+
+        if(str.length() <2)
             return true;
-        if(strChar[0] == strChar[strChar.length-1])
-            return palindrome(String.valueOf(Arrays.copyOfRange(strChar, 1, strChar.length-1)));
+        if(str.charAt(0) == str.charAt(str.length()-1))
+            return palindrome(str.substring(1, str.length()-1));
         return false;
     }
 }
