@@ -5,10 +5,12 @@ public class Recursion {
     public static void main(String[] args) {
         int[] arr = array1toN(20);
         int[] arr1 = {6, 7};
+        String str = "tenet";
 //        arr = Arrays.copyOf(arr, 6);
 //        System.arraycopy(arr1, 0, arr, 1, arr1.length);
 //        reverseArr(arr, 0, 4);
         reverseArr3(arr);
+        System.out.println(palindrome(str));
         System.out.println(Arrays.toString(arr));
 //        Arrays.stream(arr).forEach(System.out::println);
     }
@@ -92,5 +94,15 @@ public class Recursion {
 
         if (subArr.length != 0)
             System.arraycopy(subArr, 0, arr, 1, subArr.length);
+    }
+
+    private static boolean palindrome(String str){
+
+        char[] strChar = str.toCharArray();
+        if(strChar.length<2)
+            return true;
+        if(strChar[0] == strChar[strChar.length-1])
+            return palindrome(String.valueOf(Arrays.copyOfRange(strChar, 1, strChar.length-1)));
+        return false;
     }
 }
