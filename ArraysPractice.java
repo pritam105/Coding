@@ -14,16 +14,25 @@ public class ArraysPractice {
         int max = Integer.MIN_VALUE;
         int max2 = Integer.MIN_VALUE;
 
-        for (int j : arr) {
-            if (j > max) max = j;
+//        for (int j : arr) {
+//            if (j > max) max = j;
+//        }
+//
+//        for(int j : arr){
+//            if(j != max && j > max2) max2 = j;
+//        }
+//
+//        if(max2 == Integer.MIN_VALUE) max2 = -1;
+//
+//        return max2;
+
+        for(int i : arr){
+            if(i>max){
+                max2 = max;
+                max = i;
+            }
+            else if (i > max2 && i != max) max2 = i;
         }
-
-        for(int j : arr){
-            if(j != max && j > max2) max2 = j;
-        }
-
-        if(max2 == Integer.MIN_VALUE) max2 = -1;
-
         return max2;
     }
 }
