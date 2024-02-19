@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Recursion {
+public class RecursionPractice {
 
     public static void main(String[] args) {
         int[] arr = array1toN(20);
