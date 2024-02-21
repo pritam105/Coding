@@ -54,4 +54,21 @@ public class ArraysPractice {
         }
         System.out.println(frequencyMap.entrySet());
     }
+
+    public static int removeDuplicates(int[] arr,int n) {
+        // Write your code here.
+        int base = arr[0];
+        int length = 1;
+
+        if(n ==1) return length;
+
+        for(int i=1; i<n; i++){
+            if(arr[i] == base) continue;
+            else{
+                length++;
+                base = arr[i];
+            }
+        }
+        return length;
+    }
 }
