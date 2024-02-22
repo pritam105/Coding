@@ -1,16 +1,17 @@
 import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ArraysPractice {
 
 
     public static void main(String[] args){
-        int[] arr = PracticeUtils.createArray(6);
-
-        frequency(arr);
-        System.out.println(Arrays.toString(arr));
-        System.out.println("Max: "+ secondLargest(new int[]{5,5,4,3,2,1}));
+//        int[] arr = PracticeUtils.createArray(10);
+        int[] arr = new int[]{1,1,2,2,3,3,4,4,6,7,8,8,8,8};
+        arr = removeDuplicatesInPlace(arr);
+        System.out.println("After removing duplicates " + Arrays.toString(arr));
     }
 
     private static int secondLargest(int[] arr){
@@ -70,5 +71,24 @@ public class ArraysPractice {
             }
         }
         return length;
+    }
+
+    public static int[] removeDuplicatesInPlace(int[] arr){
+        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
+
+        for(int i : arr){
+            if(map.containsKey(i)) map.put(i, map.get(i)+1);
+            else map.put(i, 1);
+        }
+
+        int i = 0;
+        arr = Arrays.copyOf(arr, map.size());
+
+        for(Map.Entry<Integer, Integer> j : map.entrySet()){
+            arr[i] = j.getKey();
+            System.out.println(arr[i]);
+            i++;
+        }
+        return arr;
     }
 }
