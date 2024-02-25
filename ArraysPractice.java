@@ -1,19 +1,29 @@
 import java.sql.SQLOutput;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ArraysPractice {
 
 
     public static void main(String[] args){
 //        int[] arr = PracticeUtils.createArray(10);
-        int[] arr = new int[]{1,1,2,2,3,3,4,4,6,7,8,8,8,8};
+        int[] arr = new int[]{16,1,64,32,5,43,21,16,32,5,5};
+        testing(arr);
         arr = removeDuplicatesInPlace(arr);
-        System.out.println("After removing duplicates " + Arrays.toString(arr));
+//        System.out.println("After removing duplicates " + Arrays.toString(arr));
+
+        /*
+        pass by value trial
+         */
+        Dog dog = new Dog();
+        dog.setName("tommy");
+        foo(dog);
+        System.out.println(dog.getName());
     }
 
+    private static void foo(Dog d){
+        d.setName("jimmy");
+    }
     private static int secondLargest(int[] arr){
         int max = Integer.MIN_VALUE;
         int max2 = Integer.MIN_VALUE;
@@ -56,7 +66,7 @@ public class ArraysPractice {
         System.out.println(frequencyMap.entrySet());
     }
 
-    public static int removeDuplicates(int[] arr,int n) {
+    private static int removeDuplicates(int[] arr,int n) {
         // Write your code here.
         int base = arr[0];
         int length = 1;
@@ -73,7 +83,7 @@ public class ArraysPractice {
         return length;
     }
 
-    public static int[] removeDuplicatesInPlace(int[] arr){
+    private static int[] removeDuplicatesInPlace(int[] arr){
         LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
 
         for(int i : arr){
@@ -86,9 +96,26 @@ public class ArraysPractice {
 
         for(Map.Entry<Integer, Integer> j : map.entrySet()){
             arr[i] = j.getKey();
-            System.out.println(arr[i]);
             i++;
         }
         return arr;
+    }
+
+    private static void testing(int[] arr){
+        /*
+        Using Streams API
+         */
+        Set<Integer> set = Arrays.stream(arr)
+                .boxed()
+                .collect(Collectors.toSet());
+
+        /*
+        Using loop
+         */
+        for(int i :arr){
+            set.add(i);
+        }
+
+        System.out.println(set);
     }
 }
