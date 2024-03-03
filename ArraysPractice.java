@@ -6,19 +6,32 @@ public class ArraysPractice {
 
 
     public static void main(String[] args){
-//        int[] arr = PracticeUtils.createArray(10);
-        int[] arr = new int[]{16,1,64,32,5,43,21,16,32,5,5};
-        testing(arr);
+        int[] arr = PracticeUtils.createArray(5);
+//        int[] arr = new int[]{3,3,2,4,7,1,3,4,2};
+//        testing(arr);
         arr = removeDuplicatesInPlace(arr);
 //        System.out.println("After removing duplicates " + Arrays.toString(arr));
+
 
         /*
         pass by value trial
          */
+        int er = 5;
+        System.out.println(Arrays.toString(arr) + "Int:" + er);
+        passBy(arr, er);
+        System.out.println(Arrays.toString(arr) + "Int:" + er);
+
         Dog dog = new Dog();
         dog.setName("tommy");
         foo(dog);
         System.out.println(dog.getName());
+    }
+
+    private static void passBy(int[] param, int var){
+        int[] arr2 = new int[]{1,2,3,4};
+        param[0] = arr2[0];
+
+        var = 10;
     }
 
     private static void foo(Dog d){
