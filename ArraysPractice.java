@@ -11,8 +11,13 @@ public class ArraysPractice {
 //        testing(arr);
         arr = removeDuplicatesInPlace(arr);
 //        System.out.println("After removing duplicates " + Arrays.toString(arr));
-
-
+        HashMap<String, String> map = new HashMap<>();
+        map.put("key1", "value1");
+        map.put("key2", "value2");
+        map.put("key3", "value3");
+        System.out.println(getValuesForKeys(map, map.keySet()));
+        System.out.println(map);
+        testing(arr, map);
         /*
         pass by value trial
          */
@@ -114,7 +119,7 @@ public class ArraysPractice {
         return arr;
     }
 
-    private static void testing(int[] arr){
+    private static void testing(int[] arr, HashMap<String, String> map){
         /*
         Using Streams API
          */
@@ -129,6 +134,29 @@ public class ArraysPractice {
             set.add(i);
         }
 
-        System.out.println(set);
+        List<String> str = Arrays.asList("1re","25","3t");
+        Map<String, Integer> mapTest = str.stream()
+                .collect(Collectors.toMap(key->key, val-> val.length()));
+        System.out.println(mapTest);
+
+        Map<String, String> mapTest2 = map.entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        key -> key.getKey(),
+                        value -> value.getValue().toUpperCase())
+                );
+        System.out.println(mapTest2);
+    }
+
+    private static <K, V> Collection<V> getValuesForKeys(final Map<K, V> map, final Collection<K> keys)
+    {
+        final Collection<V> values = new ArrayList<V>(keys.size());
+        for (K key : keys) {
+            V value = map.get(key);
+            if (value != null) {
+                values.add(value);
+            }
+        }
+        return values;
     }
 }
